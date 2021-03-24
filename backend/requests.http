@@ -27,5 +27,5 @@ Content-Type: application/json
 
 ###
 POST http://localhost:5000/auth/logout HTTP/1.1
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTY2NjcxOTgsImlhdCI6MTYxNjU4MDc5Mywic3ViIjoxfQ.ZPbZI0C573XUMEjCKKHhehNg7zSqHQ9n9r5j6czSiFY
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTY2NzM0NjksImlhdCI6MTYxNjU4NzA2NCwic3ViIjoxfQ.00UIHmEkA1uefQiQmFz7TgDkeB_mBJYAOnIu_qCn-Jg
 
