@@ -1,0 +1,31 @@
+
+###
+POST http://localhost:5000/user/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "test1@email.com",
+  "username": "test1",
+  "password": "heslo"
+}
+
+###
+GET  http://localhost:5000/user/ HTTP/1.1
+
+###
+GET  http://localhost:5000/user/d11b1aec-54c5-468e-a15d-a25033abc283 HTTP/1.1
+
+
+###
+POST http://localhost:5000/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "test5@email.com",
+  "password": "heslo"
+}
+
+###
+POST http://localhost:5000/auth/logout HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTY2NjcxOTgsImlhdCI6MTYxNjU4MDc5Mywic3ViIjoxfQ.ZPbZI0C573XUMEjCKKHhehNg7zSqHQ9n9r5j6czSiFY
+
