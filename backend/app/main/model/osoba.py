@@ -8,7 +8,7 @@ class Osoba(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     jmeno = db.Column(db.String(20), nullable=False)
     prijmeni = db.Column(db.String(64), nullable=False)
-    osobni_cislo = db.Column(db.String(64), unique=True, nullable=False)
+    osobni_cislo = db.Column(db.Integer, unique=True, nullable=False)
 
     hodnost_id = db.Column(db.Integer, db.ForeignKey('hodnost.id'), nullable=False)
     hodnost = db.relationship('Hodnost', backref=db.backref('osoby', lazy='dynamic'))
@@ -20,10 +20,10 @@ class Osoba(db.Model):
     #utvar = db.relationship('Utvar', backref=db.backref('posts', lazy=True))
 
 
-    def __init__ (self, jmeno, prijmeni, osobni_cislo):
-        self.jmeno=jmeno
-        self.prijmeni=prijmeni
-        self.osobni_cislo=osobni_cislo
+    #def __init__ (self, jmeno, prijmeni, osobni_cislo):
+    #    self.jmeno=jmeno
+    #    self.prijmeni=prijmeni
+    #    self.osobni_cislo=osobni_cislo
         
 
     def __repr__(self):

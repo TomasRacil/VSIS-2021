@@ -6,9 +6,9 @@ def save_new_osoba(data):
     if not osoba:
         new_osoba = Osoba(
             jmeno=data['jmeno'],
-            prijmen=data['prijmeni'],
+            prijmeni=data['prijmeni'],
             osobni_cislo=data['osobni_cislo'],
-            hodnost_id=data['hodnost_id']
+            hodnost_id=data.get('hodnost_id', None)
         )
 
         #user_role=Role.query.filter_by(name="user").first()
