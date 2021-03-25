@@ -15,10 +15,10 @@ class utvar(db.Model):
     #osoba = db.relationship('Osoba', backref=db.backref('posts', lazy=True))
 
     
-    def __init__ (self, nazev_utvaru, lokace, cislo_vu):
-        self.nazev_utvaru=nazev_utvaru
-        self.lokace=lokace
-        self.cislo_vu=cislo_vu
+    # def __init__ (self, nazev_utvaru, lokace, cislo_vu):
+    #     self.nazev_utvaru=nazev_utvaru
+    #     self.lokace=lokace
+    #     self.cislo_vu=cislo_vu
 
     def __repr__(self):
               return f"nazev_utvaru: {self.nazev_utvaru} lokace: {self.lokace} cislo_vu: {self.cislo_vu}"

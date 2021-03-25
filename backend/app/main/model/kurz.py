@@ -15,13 +15,13 @@ class Kurz(db.Model):
     zacatek_kurzu = db.Column(db.DateTime, nullable=False)
     konec_kurzu = db.Column(db.DateTime, nullable=False)
 
-    def __init__ (self, nazev, misto, vedouci, voj_oznaceni, zacatek_kurzu, konec_kurzu):
-        self.nazev=nazev
-        self.misto=misto
-        self.vedouci=vedouci
-        self.voj_oznaceni=voj_oznaceni
-        self.zacatek_kurzu=zacatek_kurzu
-        self.konec_kurzu=konec_kurzu
+    # def __init__ (self, nazev, misto, vedouci, voj_oznaceni, zacatek_kurzu, konec_kurzu):
+    #     self.nazev=nazev
+    #     self.misto=misto
+    #     self.vedouci=vedouci
+    #     self.voj_oznaceni=voj_oznaceni
+    #     self.zacatek_kurzu=zacatek_kurzu
+    #     self.konec_kurzu=konec_kurzu
 
 
     def __repr__(self):
