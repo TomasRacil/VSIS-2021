@@ -1,5 +1,6 @@
 from app.main import db
 from app.main.model.osoba import Osoba
+from app.main.model.hodnost import Hodnost
 
 def save_new_osoba(data):
     osoba = Osoba.query.filter_by(osobni_cislo=data['osobni_cislo']).first()
@@ -8,7 +9,7 @@ def save_new_osoba(data):
             jmeno=data['jmeno'],
             prijmeni=data['prijmeni'],
             osobni_cislo=data['osobni_cislo'],
-            hodnost_id=data.get('hodnost_id', None)
+            hodnost=Hodnost.query.filter_by(jmeno=data['hodnost']).first()
         )
 
         #user_role=Role.query.filter_by(name="user").first()

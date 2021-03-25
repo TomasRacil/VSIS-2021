@@ -18,10 +18,10 @@ class AuthDto:
     })
 
 class OsobaDto:
-    api = Namespace('osoba', description='enpoint pro =upravu osob')
+    api = Namespace('osoba', description='enpoint pro upravu osob')
     osoba=api.model('osoba', {
-        'jmeno': fields.String(required=True, description='user email address'),
-        'prijmeni': fields.String(required=True, description='user username'),
-        'osobni_cislo': fields.Integer(required=True, description='user password'),
-        'hodnost_id': fields.Integer(description='user Identifier')
+        'jmeno': fields.String(required=True, description='krestni jmeno vojáka', example='Josef'),
+        'prijmeni': fields.String(required=True, description='prijmeni vojáka', example='Omáčka'),
+        'osobni_cislo': fields.Integer(required=True, description='osobní číslo vojáka', example=123456789),
+        'hodnost': fields.String(required=True, description='hodnost vojáka', example='vojín')
     })
