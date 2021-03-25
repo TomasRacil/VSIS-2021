@@ -6,7 +6,11 @@ from flask_script import Manager
 
 from app import blueprint
 from app.main import create_app, db
+<<<<<<< HEAD
 from app.main.model import user, blacklist, hodnost, osoba, utvar
+=======
+from app.main.model import user, blacklist, hodnost, osoba, kurz
+>>>>>>> e1b9ee1e0e288dd978fcf4003ce83505f66207d6
 
 app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
 app.register_blueprint(blueprint)
