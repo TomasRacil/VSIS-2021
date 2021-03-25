@@ -71,7 +71,8 @@ class Auth:
                             'user_id': user.id,
                             'email': user.email,
                             'admin': user.admin,
-                            'registered_on': str(user.registered_on)
+                            'registered_on': str(user.registered_on),
+                            'roles':[role.name for role in user.roles.all()]
                         }
                     }
                     return response_object, 200

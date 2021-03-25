@@ -1,8 +1,9 @@
 import uuid
-import datetime
+#import datetime
 
 from app.main import db
 from app.main.model.user import User
+from app.main.model.role import Role
 
 
 def save_new_user(data):
@@ -13,8 +14,14 @@ def save_new_user(data):
             email=data['email'],
             username=data['username'],
             password=data['password'],
-            registered_on=datetime.datetime.utcnow()
+            #registered_on=datetime.datetime.utcnow()
+            
         )
+
+        user_role=Role.query.filter_by(name="user").first()
+        if user_role:
+            new_user.roles.append(user_role)
+        
         save_changes(new_user)
         #response_object = {
         #    'status': 'success',
