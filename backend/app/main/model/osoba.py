@@ -1,9 +1,7 @@
 from .. import db
 
 class Osoba(db.Model):
-    """
-    Model pro ukládání jenotlivých jmen, příjmení, osobní číslo, FK-hodnost, FK-kurz, FK-utvar.
-    """
+    """Model pro ukládání jenotlivých jmen, příjmení, osobní číslo, FK-hodnost, FK-kurz, FK-utvar."""
     __tablename__="osoba"
 
 
@@ -12,8 +10,8 @@ class Osoba(db.Model):
     prijmeni = db.Column(db.String(64), nullable=False)
     osobni_cislo = db.Column(db.String(64), unique=True, nullable=False)
 
-    #hodnost_id = db.Column(db.Integer, db.ForeignKey('ID_HODNOST'), nullable=False)
-    #hodnost = db.relationship('Hodnost', backref=db.backref('posts', lazy=True))
+    hodnost_id = db.Column(db.Integer, db.ForeignKey('hodnost.id'), nullable=False)
+    hodnost = db.relationship('Hodnost', backref=db.backref('osoby', lazy='dynamic'))
 
     #kurz_id = db.Column(db.Integer, db.ForeignKey('ID_KURZ'), nullable=False)
     #kurz = db.relationship('Kurz', backref=db.backref('posts', lazy=True))

@@ -6,7 +6,7 @@ class Hodnost(db.Model):
     """
     __tablename__="hodnost"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    hodnost = db.Column(db.String(20), unique=True, nullable=False)
+    jmeno = db.Column(db.String(20), unique=True, nullable=False)
     hodnostni_sbor = db.Column(db.String(20), nullable=False)
 
     def __init__ (self, hodnost, hodnostni_sbor):

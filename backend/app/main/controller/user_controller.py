@@ -11,7 +11,7 @@ _user = UserDto.user
 
 @api.route('/')
 class UserList(Resource):
-    #@access_control('admin')
+    @access_control('admin')
     @api.doc('list_of_registered_users')
     @api.marshal_list_with(_user, envelope='data')
     def get(self):

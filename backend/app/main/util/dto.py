@@ -16,3 +16,12 @@ class AuthDto:
         'email': fields.String(required=True, description='The email address'),
         'password': fields.String(required=True, description='The user password '),
     })
+
+class OsobaDto:
+    api = Namespace('osoba', description='enpoint pro =upravu osob')
+    osoba=api.model('osoba', {
+        'jmeno': fields.String(required=True, description='user email address'),
+        'prijmeni': fields.String(required=True, description='user username'),
+        'osobni_cislo': fields.Integer(required=True, description='user password'),
+        'hodnost_id': fields.Integer(description='user Identifier')
+    })
