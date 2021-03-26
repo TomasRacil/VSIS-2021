@@ -2,9 +2,9 @@
 ARG VARIANT=3
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
-ENV PYTHONUNBUFFERED 1
-ENV FLASK_APP=app.py
-ENV FLASK_ENV=development
+#ENV PYTHONUNBUFFERED 1
+#ENV FLASK_APP=app.py
+#ENV FLASK_ENV=development
 
 # [Optional] If your requirements rarely change, uncomment this section to add them to the image.
 # COPY requirements.txt /tmp/pip-tmp/
