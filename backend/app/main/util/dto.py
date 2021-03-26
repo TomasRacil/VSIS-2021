@@ -23,5 +23,7 @@ class OsobaDto:
         'jmeno': fields.String(required=True, description='krestni jmeno vojáka', example='Josef'),
         'prijmeni': fields.String(required=True, description='prijmeni vojáka', example='Omáčka'),
         'osobni_cislo': fields.Integer(required=True, description='osobní číslo vojáka', example=123456789),
-        'hodnost': fields.String(required=True, description='hodnost vojáka', example='vojín')
+        'hodnost': fields.String(required=True, description='hodnost vojáka', example='vojín'),
+        #'hodnost_id':fields.Integer(required=True,description='id hodnosti vojáka', example=0),
+        'utvar_id': fields.Integer(required=True, description='id vojakova utvar',example=2994)
     })

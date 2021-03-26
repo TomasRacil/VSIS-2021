@@ -1,6 +1,7 @@
 from app.main import db
 from app.main.model.osoba import Osoba
 from app.main.model.hodnost import Hodnost
+#from app.main.model.utvar import Utvar
 
 def save_new_osoba(data):
     osoba = Osoba.query.filter_by(osobni_cislo=data['osobni_cislo']).first()
@@ -9,7 +10,9 @@ def save_new_osoba(data):
             jmeno=data['jmeno'],
             prijmeni=data['prijmeni'],
             osobni_cislo=data['osobni_cislo'],
-            hodnost=Hodnost.query.filter_by(jmeno=data['hodnost']).first()
+            hodnost=Hodnost.query.filter_by(jmeno=data['hodnost']).first(),
+            #utvar=Utvar.query.filter_by(utvar=data['utvar']).first()
+            utvar_id=data['utvar']
         )
 
         #user_role=Role.query.filter_by(name="user").first()
@@ -23,6 +26,9 @@ def save_new_osoba(data):
         }
         return response_object, 200
         #return generate_token(new_user)
+
+def get_all_osoba():
+    return Osoba.query.join(Hodnost).with_entities(Osoba.jmeno, Osoba.prijmeni,Osoba.osobni_cislo,Hodnost.jmeno.label("hodnost"),Osoba.utvar_id).all()
 
 def save_changes(data):
     db.session.add(data)

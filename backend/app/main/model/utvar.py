@@ -1,6 +1,6 @@
 from .. import db
 
-class utvar(db.Model):
+class Utvar(db.Model):
     """
     Model pro ukládání názvu útvaru, jeho lokace a čísla VÚ/VZ
     """
