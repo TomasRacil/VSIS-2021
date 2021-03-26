@@ -13,17 +13,14 @@ class Osoba(db.Model):
     hodnost_id = db.Column(db.Integer, db.ForeignKey('hodnost.id'), nullable=False)
     hodnost = db.relationship('Hodnost', backref=db.backref('osoby', lazy='dynamic'))
 
-    #kurz_id = db.Column(db.Integer, db.ForeignKey('ID_KURZ'), nullable=False)
-    #kurz = db.relationship('Kurz', backref=db.backref('posts', lazy=True))
-
-    #utvar_id = db.Column(db.Integer, db.ForeignKey('ID_UTVAR'), nullable=False)
-    #utvar = db.relationship('Utvar', backref=db.backref('posts', lazy=True))
+    utvar_id = db.Column(db.Integer, db.ForeignKey('utvar.id'), nullable=False)
+    utvar = db.relationship('Utvar', backref=db.backref('utvary', lazy='dynamic'))
 
 
-    #def __init__ (self, jmeno, prijmeni, osobni_cislo):
-    #    self.jmeno=jmeno
-    #    self.prijmeni=prijmeni
-    #    self.osobni_cislo=osobni_cislo
+    # def __init__ (self, jmeno, prijmeni, osobni_cislo):
+    #     self.jmeno=jmeno
+    #     self.prijmeni=prijmeni
+    #     self.osobni_cislo=osobni_cislo
         
 
     def __repr__(self):
