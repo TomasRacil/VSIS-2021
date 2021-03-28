@@ -27,3 +27,30 @@ class OsobaDto:
         #'hodnost_id':fields.Integer(required=True,description='id hodnosti vojáka', example=0),
         'utvar_id': fields.Integer(required=True, description='id vojakova utvar',example=2994)
     })
+
+class KurzDto:
+    api = Namespace('kurz', description='enpoint pro upravu kurzu')
+    kurz=api.model('kurz', {
+        'nazev': fields.String(required=True, description='uplný nazev kurzu', example='Strukturovaná kabeláž'),
+        'misto': fields.String(required=True, description='kde kurz probíhá', example='Brno'),
+        'vedouci': fields.String(required=True, description='celé jméno vedoucího', example='Antonín Voříšek'),
+        'voj_oznaceni': fields.String(required=True, description='vojenské označení', example='SK_3098'),
+        'zacatek_kurzu': fields.String(description='začátek kurzu', example='1.1.1989'), #required=True, DateTime
+        'konec_kurzu': fields.String(description='konec kurzu', example='1.1.1989') #required=True, DateTime, TODO
+    })
+
+
+class UtvarDto:
+    api = Namespace('utvar', description='enpoint pro upravu utvaru')
+    utvar=api.model('utvar', {
+        'nazev_utvaru': fields.String(required=True, description='uplný nazev utvaru', example='UNOB'),
+        'lokace': fields.String(required=True, description='kde se utvar nachází', example='Brno'),
+        'cislo_vu': fields.Integer(required=True, description='cislo utvaru', example=2994),
+    })
+
+class HodnostDto:
+    api = Namespace('hodnost', description='enpoint pro upravu hodnosti')
+    hodnost=api.model('hodnost', {
+        'jmeno': fields.String(required=True, description='uplný nazev hodnosti', example='Poručík'),
+        'hodnostni_sbor': fields.String(required=True, description='hodnostní sbor do kterého je zařazena hodnost', example='Nižší důstojník'),
+    })

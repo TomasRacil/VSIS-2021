@@ -44,3 +44,26 @@ Content-Type: application/json
   "osobni_cislo": 1322424,
   "hodnost_id":0
 }
+
+###
+POST http://localhost:5000/kurz/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "nazev": "test",
+  "misto": "test",
+  "vedouci": "test",
+  "voj_oznaceni": "test",
+  "zacatek_kurzu": "1.1.1997",
+  "konec_kurzu": "1.1.1997"
+}
+
+###
+POST http://localhost:5000/utvar/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "nazev_utvaru": "test",
+  "lokace": "test",
+  "cislo_vu": 2994
+}
