@@ -24,7 +24,7 @@ def save_new_kurz(data):
         #return generate_token(new_user)
 
 def get_all_kurz():
-    return Kurz.query.with_entities(Kurz.nazev, Kurz.misto, Kurz.voj_oznaceni, Kurz.id, Kurz.zacatek_kurzu, Kurz.konec_kurzu).all()  
+    return Kurz.query.with_entities(Kurz.nazev, Kurz.misto, Kurz.voj_oznaceni, Kurz.zacatek_kurzu, Kurz.konec_kurzu).all()  
 
 def save_changes(data):
    db.session.add(data)

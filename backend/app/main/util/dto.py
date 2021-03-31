@@ -43,7 +43,7 @@ class OsobaDto:
         'osobni_cislo': fields.Integer(required=True, description='osobní číslo vojáka', example=123456789),
         'hodnost': fields.String(required=True, description='hodnost vojáka', example='vojín'),
         # 'hodnost_id':fields.Integer(required=True,description='id hodnosti vojáka', example=0),
-        'utvar_id': fields.Integer(required=True, description='id vojakova utvar', example=2994)
+        'utvar': fields.Integer(required=True, description='id vojakova utvaru', example=2994)
     })
     osoba_get = api.model('osoba_get', {
         'id': fields.Integer(description='identifikator', example=1),
@@ -52,13 +52,12 @@ class OsobaDto:
         'osobni_cislo': fields.Integer(required=True, description='osobní číslo vojáka', example=123456789),
         'hodnost': fields.String(required=True, description='hodnost vojáka', example='vojín'),
         # 'hodnost_id':fields.Integer(required=True,description='id hodnosti vojáka', example=0),
-        'utvar_id': fields.Integer(required=True, description='id vojakova utvar', example=2994)
+        'utvar': fields.Integer(required=True, description='id vojakova utvaru', example=2994)
     })
 
 
 class TestDto:
-    api = Namespace('test', description='endpoint for testing', decorators=[
-                    cors.crossdomain(origin="http://localhost:3000")])
+    api = Namespace('test', description='endpoint for testing', decorators=[cors.crossdomain(origin="http://localhost:3000")])
     test = api.model('test', {
         'message': fields.String(required=True, description='message to send', example='Hello!')
     })
@@ -94,10 +93,9 @@ class UtvarDto:
     utvar_post = api.model('utvar_post', {
         'nazev_utvaru': fields.String(required=True, description='uplný nazev utvaru', example='UNOB'),
         'lokace': fields.String(required=True, description='kde se utvar nachází', example='Brno'),
-        'cislo_vu': fields.Integer(required=True, description='cislo utvaru', example=2994),
+        #'cislo_vu': fields.Integer(required=True, description='cislo utvaru', example=2994), #ted je to ID takže ho tu nechci?? TODO
     })
     utvar_get = api.model('utvar_get', {
-        'id': fields.Integer(description='identifikator', example=1),
         'nazev_utvaru': fields.String(required=True, description='uplný nazev utvaru', example='UNOB'),
         'lokace': fields.String(required=True, description='kde se utvar nachází', example='Brno'),
         'cislo_vu': fields.Integer(required=True, description='cislo utvaru', example=2994),

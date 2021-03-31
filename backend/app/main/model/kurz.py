@@ -16,12 +16,12 @@ class Kurz(db.Model):
 
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    nazev = db.Column(db.String(20), unique=True, nullable=False)
+    nazev = db.Column(db.String(40), unique=True, nullable=False)
     misto = db.Column(db.String(20), nullable=False)
-    #vedouci = db.Column(db.String(32), nullable=False) #Vpodstate je to Osoba neměl by se tedy odkazovat na ni? TODO
+    #vedouci = db.Column(db.String(32), nullable=False) 
     voj_oznaceni = db.Column(db.String(20), unique=True, nullable=False)
-    zacatek_kurzu = db.Column(db.DateTime, nullable=False)
-    konec_kurzu = db.Column(db.DateTime, nullable=False)
+    zacatek_kurzu = db.Column(db.String(20), nullable=False) #db.DateTime dává chybu při zadanem datu TODO
+    konec_kurzu = db.Column(db.String(20), nullable=False) #db.DateTime
 
     osoby = db.relationship('Osoba', secondary=osoba_kurz, lazy='dynamic',backref=db.backref('kurzy', lazy='dynamic'))
 

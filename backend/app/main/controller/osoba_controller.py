@@ -6,8 +6,8 @@ from ..util.dto import OsobaDto
 from ..service.osoba_service import save_new_osoba, get_all_osoba
 
 api = OsobaDto.api
-_osoba_post = OsobaDto.osoba_get
-_osoba_get = OsobaDto.osoba_post
+_osoba_post = OsobaDto.osoba_post
+_osoba_get = OsobaDto.osoba_get
 
 
 @api.route('/')

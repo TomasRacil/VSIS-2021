@@ -17,11 +17,11 @@ class App extends Component {
   }
 
   render() {
-    // fetch("http://172.23.0.1:5000/user")
-    //   .then((res) => res.json())
-    //   .then(console.log)
-    //   .catch((error) => console.log(error));
-    // getMessage();
+    fetch("http://172.23.0.1:5000/user")
+      .then((res) => res.json())
+      .then(console.log)
+      .catch((error) => console.log(error));
+    getMessage();
     return <h1>Hello world</h1>;
   }
 }
