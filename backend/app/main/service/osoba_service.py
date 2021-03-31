@@ -28,7 +28,7 @@ def save_new_osoba(data):
         #return generate_token(new_user)
 
 def get_all_osoba():
-    return Osoba.query.join(Hodnost).with_entities(Osoba.jmeno, Osoba.prijmeni,Osoba.osobni_cislo,Hodnost.jmeno.label("hodnost"),Osoba.utvar_id).all()
+    return Osoba.query.join(Hodnost).with_entities(Osoba.jmeno, Osoba.prijmeni,Osoba.osobni_cislo,Hodnost.nazev.label("hodnost"),Osoba.utvar_id).all()
 
 def save_changes(data):
     db.session.add(data)

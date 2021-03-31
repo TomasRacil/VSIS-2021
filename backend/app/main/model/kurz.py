@@ -3,7 +3,9 @@ from .. import db
 
 osoba_kurz = db.Table('osoba_kurz',
     db.Column('osoba_id', db.Integer, db.ForeignKey('osoba.id'), primary_key=True),
-    db.Column('kurz_id', db.Integer, db.ForeignKey('kurz.id'), primary_key=True)
+    db.Column('kurz_id', db.Integer, db.ForeignKey('kurz.id'), primary_key=True),
+    db.Column('ucastnik', db.Boolean,default=True, nullable=False),
+    db.Column('vedouci',db.Boolean,default=False, nullable=False)
 )
 
 class Kurz(db.Model):
@@ -16,7 +18,7 @@ class Kurz(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nazev = db.Column(db.String(20), unique=True, nullable=False)
     misto = db.Column(db.String(20), nullable=False)
-    vedouci = db.Column(db.String(32), nullable=False) #Vpodstate je to Osoba neměl by se tedy odkazovat na ni? TODO
+    #vedouci = db.Column(db.String(32), nullable=False) #Vpodstate je to Osoba neměl by se tedy odkazovat na ni? TODO
     voj_oznaceni = db.Column(db.String(20), unique=True, nullable=False)
     zacatek_kurzu = db.Column(db.DateTime, nullable=False)
     konec_kurzu = db.Column(db.DateTime, nullable=False)

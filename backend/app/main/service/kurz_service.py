@@ -9,7 +9,7 @@ def save_new_kurz(data):
         new_kurz = Kurz(
             nazev=data['nazev'],
             misto=data['misto'],
-            vedouci=data['vedouci'],
+            #vedouci=data['vedouci'],
             voj_oznaceni=data['voj_oznaceni'],
             zacatek_kurzu=data['zacatek_kurzu'],
             konec_kurzu=data['konec_kurzu']
@@ -24,7 +24,7 @@ def save_new_kurz(data):
         #return generate_token(new_user)
 
 def get_all_kurz():
-    return Kurz.query.with_entities(Kurz.nazev, Kurz.misto, Kurz.vedouci, Kurz.voj_oznaceni, Kurz.id, Kurz.zacatek_kurzu, Kurz.konec_kurzu,).all()  
+    return Kurz.query.with_entities(Kurz.nazev, Kurz.misto, Kurz.voj_oznaceni, Kurz.id, Kurz.zacatek_kurzu, Kurz.konec_kurzu).all()  
 
 def save_changes(data):
    db.session.add(data)
