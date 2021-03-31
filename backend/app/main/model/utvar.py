@@ -10,8 +10,7 @@ class Utvar(db.Model):
     #id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nazev_utvaru = db.Column(db.String(50), nullable=False)
     lokace = db.Column(db.String(30), nullable=False)
-    cislo_vu = db.Column(db.Integer, primary_key=True,
-                         unique=True, nullable=False)
+    cislo_vu = db.Column(db.Integer, primary_key=True, unique=True, nullable=False) #cislo vojenskeho utvaru považujeme za PK
 
     #osoba_id = db.Column(db.Integer, db.ForeignKey('id_osoba'), nullable=False)
     #osoba = db.relationship('Osoba', backref=db.backref('posts', lazy=True))

@@ -15,9 +15,6 @@ def save_new_osoba(data):
             utvar_id=data['utvar']
         )
 
-        #user_role=Role.query.filter_by(name="user").first()
-        #if user_role:
-        #    new_user.roles.append(user_role)
         
         save_changes(new_osoba)
         response_object = {

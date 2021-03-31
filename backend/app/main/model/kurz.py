@@ -10,7 +10,7 @@ osoba_kurz = db.Table('osoba_kurz',
 
 class Kurz(db.Model):
     """
-    Model pro ukládání jenotlivých kurzů: jejich název, místo, vedoucí, vojenské označení, začátek a konec kurzu.
+    Model pro ukládání jenotlivých kurzů: jejich název, místo, vojenské označení, začátek a konec kurzu.
     """
     __tablename__="kurz"
 

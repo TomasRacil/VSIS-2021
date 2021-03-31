@@ -6,7 +6,7 @@ class Hodnost(db.Model):
     """
     __tablename__="hodnost"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    nazev = db.Column(db.String(20), unique=True, nullable=False) #spise nazev ale nevím kde všude změnit TODO
+    nazev = db.Column(db.String(20), unique=True, nullable=False) 
     hodnostni_sbor = db.Column(db.String(20), nullable=False)
 
     #def __init__ (self, hodnost, hodnostni_sbor):
