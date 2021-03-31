@@ -8,7 +8,7 @@ osoba_kurz = db.Table('osoba_kurz',
 
 class Kurz(db.Model):
     """
-    Model pro ukládání jenotlivých kurzů.
+    Model pro ukládání jenotlivých kurzů: jejich název, místo, vedoucí, vojenské označení, začátek a konec kurzu.
     """
     __tablename__="kurz"
 
@@ -16,8 +16,8 @@ class Kurz(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nazev = db.Column(db.String(20), unique=True, nullable=False)
     misto = db.Column(db.String(20), nullable=False)
-    vedouci = db.Column(db.String(32), nullable=False)
-    voj_oznaceni = db.Column(db.String(20), nullable=False)
+    vedouci = db.Column(db.String(32), nullable=False) #Vpodstate je to Osoba neměl by se tedy odkazovat na ni? TODO
+    voj_oznaceni = db.Column(db.String(20), unique=True, nullable=False)
     zacatek_kurzu = db.Column(db.DateTime, nullable=False)
     konec_kurzu = db.Column(db.DateTime, nullable=False)
 

@@ -22,7 +22,7 @@ def save_new_osoba(data):
         save_changes(new_osoba)
         response_object = {
             'status': 'success',
-            'message': 'Osoba přidána.'
+            'message': 'Osoba added.'
         }
         return response_object, 200
         #return generate_token(new_user)
