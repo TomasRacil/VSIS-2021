@@ -8,7 +8,11 @@
 	"workspaceFolder": "/workspace/frontend",
 	// Set *default* container specific settings.json values on container create.
 	"settings": { 
-		"terminal.integrated.shell.linux": "/bin/bash"
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"editor.formatOnSave": true,
+		"[javascriptreact]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		}
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
@@ -20,7 +24,11 @@
 		"coenraads.bracket-pair-colorizer-2",
 		"solarliner.linux-themes",
 		"msjsdiag.vscode-react-native",
-		"aaron-bond.better-comments"
+		"aaron-bond.better-comments",
+		"burkeholland.simple-react-snippets",
+		"formulahendry.auto-rename-tag",
+		"humao.rest-client",
+		"wix.vscode-import-cost"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

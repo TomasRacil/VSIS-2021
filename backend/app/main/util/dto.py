@@ -1,4 +1,4 @@
-from flask_restx import Namespace, fields
+from flask_restx import Namespace, fields, cors
 
 
 class UserDto:
@@ -7,8 +7,9 @@ class UserDto:
         'email': fields.String(required=True, description='user email address'),
         'username': fields.String(required=True, description='user username'),
         'password': fields.String(required=True, description='user password'),
-        #'public_id': fields.String(description='user Identifier')
+        # 'public_id': fields.String(description='user Identifier')
     })
+
 
 class AuthDto:
     api = Namespace('auth', description='authentication related operations')
@@ -17,13 +18,22 @@ class AuthDto:
         'password': fields.String(required=True, description='The user password '),
     })
 
+
 class OsobaDto:
     api = Namespace('osoba', description='enpoint pro upravu osob')
-    osoba=api.model('osoba', {
+    osoba = api.model('osoba', {
         'jmeno': fields.String(required=True, description='krestni jmeno vojáka', example='Josef'),
         'prijmeni': fields.String(required=True, description='prijmeni vojáka', example='Omáčka'),
         'osobni_cislo': fields.Integer(required=True, description='osobní číslo vojáka', example=123456789),
         'hodnost': fields.String(required=True, description='hodnost vojáka', example='vojín'),
-        #'hodnost_id':fields.Integer(required=True,description='id hodnosti vojáka', example=0),
-        'utvar_id': fields.Integer(required=True, description='id vojakova utvar',example=2994)
+        # 'hodnost_id':fields.Integer(required=True,description='id hodnosti vojáka', example=0),
+        'utvar_id': fields.Integer(required=True, description='id vojakova utvar', example=2994)
+    })
+
+
+class TestDto:
+    api = Namespace('test', description='endpoint for testing',
+                    decorators=[cors.crossdomain(origin="http://localhost:3000")])
+    test = api.model('test', {
+        'message': fields.String(required=True, description='message to send', example='Hello!')
     })
