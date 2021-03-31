@@ -4,11 +4,26 @@ import datetime
 
 class UserDto:
     api = Namespace('user', description='user related operations')
-    user = api.model('user', {
+    user_register = api.model('user_register', {
         'email': fields.String(required=True, description='user email address'),
         'username': fields.String(required=True, description='user username'),
         'password': fields.String(required=True, description='user password'),
-        # 'public_id': fields.String(description='user Identifier')
+        # 'public_id': fields.Ïnteger(description='user Identifier')
+    })
+    user_get = api.model('user_get', {
+        'email': fields.String(required=True, description='user email address'),
+        'username': fields.String(required=True, description='user username'),
+        # 'password': fields.String(required=True, description='user password'),
+        'public_id': fields.String(required=True, description='user Identifier')
+    })
+    user_update = api.model('user_update', {
+        'email': fields.String(required=False, description='user email address'),
+        'username': fields.String(required=False, description='user username'),
+        'current_password': fields.String(required=True, description='old user password'),
+        'password': fields.String(required=False, description='new user password')
+    })
+    user_delete = api.model('user_delete', {
+        'current_password': fields.String(required=True, description='old user password')
     })
 
 
