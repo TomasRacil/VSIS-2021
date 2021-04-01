@@ -2,7 +2,7 @@ from flask import request
 from flask_restx import Resource
 
 from ..util.dto import OsobaDto
-#from ..util.decorator import access_control
+#from ..util.decorator import access_control #tohle je zatím příprava na pozdější kontrolu??? TODO
 from ..service.osoba_service import save_new_osoba, get_all_osoba
 
 api = OsobaDto.api
@@ -18,7 +18,7 @@ class UserList(Resource):
         """List all registered osob"""
         return get_all_osoba()
 
-    @api.response(200, 'User successfully created.')
+    @api.response(200, 'Osoba successfully created.')
     @api.doc('create a new osoba')
     @api.expect(_osoba_post, validate=True)
     def post(self):

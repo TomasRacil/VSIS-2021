@@ -2,6 +2,7 @@ from flask import request
 from flask_restx import Resource
 
 from ..util.dto import HodnostDto
+#from ..util.decorator import access_control
 from ..service.hodnost_service import save_new_hodnost, get_all_hodnost
 
 api = HodnostDto.api
@@ -18,7 +19,7 @@ class UserList(Resource):
         """List all hodnosti"""
         return get_all_hodnost()
 
-    @api.response(200, 'User successfully created.')
+    @api.response(200, 'Hodnost successfully created.')
     @api.doc('create a new hodnost')
     @api.expect(_hodnost_post, validate=True)
     def post(self):

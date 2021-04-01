@@ -1,7 +1,6 @@
 from flask_restx import Namespace, fields, cors
 import datetime
 
-
 class UserDto:
     api = Namespace('user', description='user related operations', decorators=[cors.crossdomain(origin="http://localhost:3000")])
     user_register = api.model('user_register', {
@@ -41,7 +40,7 @@ class OsobaDto:
         'jmeno': fields.String(required=True, description='krestni jmeno vojáka', example='Josef'),
         'prijmeni': fields.String(required=True, description='prijmeni vojáka', example='Omáčka'),
         'osobni_cislo': fields.Integer(required=True, description='osobní číslo vojáka', example=123456789),
-        'hodnost': fields.String(required=True, description='hodnost vojáka', example='vojín'),
+        'hodnost': fields.String(required=True, description='hodnost vojáka', example='Vojín'), #je potřeba aby hodnost byla totožná s uloženou v tabulce!! TODO
         # 'hodnost_id':fields.Integer(required=True,description='id hodnosti vojáka', example=0),
         'utvar': fields.Integer(required=True, description='id vojakova utvaru', example=2994)
     })
@@ -50,7 +49,7 @@ class OsobaDto:
         'jmeno': fields.String(required=True, description='krestni jmeno vojáka', example='Josef'),
         'prijmeni': fields.String(required=True, description='prijmeni vojáka', example='Omáčka'),
         'osobni_cislo': fields.Integer(required=True, description='osobní číslo vojáka', example=123456789),
-        'hodnost': fields.String(required=True, description='hodnost vojáka', example='vojín'),
+        'hodnost': fields.String(required=True, description='hodnost vojáka', example='Vojín'), 
         # 'hodnost_id':fields.Integer(required=True,description='id hodnosti vojáka', example=0),
         'utvar': fields.Integer(required=True, description='id vojakova utvaru', example=2994)
     })
@@ -71,9 +70,9 @@ class KurzDto:
         # 'vedouci': fields.String(required=True, description='celé jméno vedoucího', example='Antonín Voříšek'),
         'voj_oznaceni': fields.String(required=True, description='vojenské označení', example='SK_3098'),
         # required=True, DateTime
-        'zacatek_kurzu': fields.String(description='začátek kurzu', example=str(datetime.datetime.now())),
+        'zacatek_kurzu': fields.DateTime(description='začátek kurzu', example=str(datetime.datetime.now())),
         # required=True, DateTime, TODO
-        'konec_kurzu': fields.String(description='konec kurzu', example=str(datetime.datetime.now()))
+        'konec_kurzu': fields.DateTime(description='konec kurzu', example=str(datetime.datetime.now()))
     })
     kurz_get = api.model('kurz_get', {
         'id': fields.Integer(description='identifikator', example=1),
@@ -82,9 +81,9 @@ class KurzDto:
         # 'vedouci': fields.String(required=True, description='celé jméno vedoucího', example='Antonín Voříšek'),
         'voj_oznaceni': fields.String(required=True, description='vojenské označení', example='SK_3098'),
         # required=True, DateTime
-        'zacatek_kurzu': fields.String(description='začátek kurzu', example=str(datetime.datetime.now())),
+        'zacatek_kurzu': fields.DateTime(description='začátek kurzu', example=str(datetime.datetime.now())), 
         # required=True, DateTime, TODO
-        'konec_kurzu': fields.String(description='konec kurzu', example=str(datetime.datetime.now()))
+        'konec_kurzu': fields.DateTime(description='konec kurzu', example=str(datetime.datetime.now())) 
     })
 
 
@@ -93,7 +92,7 @@ class UtvarDto:
     utvar_post = api.model('utvar_post', {
         'nazev_utvaru': fields.String(required=True, description='uplný nazev utvaru', example='UNOB'),
         'lokace': fields.String(required=True, description='kde se utvar nachází', example='Brno'),
-        #'cislo_vu': fields.Integer(required=True, description='cislo utvaru', example=2994), #ted je to ID takže ho tu nechci?? TODO
+        'cislo_vu': fields.Integer(required=True, description='cislo utvaru', example=2994),
     })
     utvar_get = api.model('utvar_get', {
         'nazev_utvaru': fields.String(required=True, description='uplný nazev utvaru', example='UNOB'),

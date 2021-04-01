@@ -1,6 +1,6 @@
 from app.main import db
 from app.main.model.kurz import Kurz
-from app.main.model.osoba import Osoba
+#from app.main.model.osoba import Osoba
 
 
 def save_new_kurz(data):
@@ -9,7 +9,7 @@ def save_new_kurz(data):
         new_kurz = Kurz(
             nazev=data['nazev'],
             misto=data['misto'],
-            #vedouci=data['vedouci'],
+            #vedouci=data['vedouci'], #jak pridat osobu místo toho vedoucího?? TODO
             voj_oznaceni=data['voj_oznaceni'],
             zacatek_kurzu=data['zacatek_kurzu'],
             konec_kurzu=data['konec_kurzu']

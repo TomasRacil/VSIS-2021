@@ -18,7 +18,7 @@ class UserList(Resource):
         """List all registered utvaru"""
         return get_all_utvar()
 
-    @api.response(200, 'User successfully created.')
+    @api.response(200, 'Utvar successfully created.')
     @api.doc('create a new utvar')
     @api.expect(_utvar_post, validate=True)
     def post(self):

@@ -2,6 +2,7 @@ from flask import request
 from flask_restx import Resource
 
 from ..util.dto import KurzDto
+#from ..util.decorator import access_control
 from ..service.kurz_service import save_new_kurz, get_all_kurz
 
 api = KurzDto.api
@@ -17,7 +18,7 @@ class UserList(Resource):
         """List all registered kurzy"""
         return get_all_kurz()
 
-    @api.response(200, 'User successfully created.')
+    @api.response(200, 'Kurz successfully created.')
     @api.doc('create a new kurz')
     @api.expect(_kurz_post, validate=True)
     def post(self):

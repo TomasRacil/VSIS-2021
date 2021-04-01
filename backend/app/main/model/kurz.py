@@ -16,12 +16,12 @@ class Kurz(db.Model):
 
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    nazev = db.Column(db.String(40), unique=True, nullable=False)
+    nazev = db.Column(db.String(40), unique=True, nullable=False) 
     misto = db.Column(db.String(20), nullable=False)
-    #vedouci = db.Column(db.String(32), nullable=False) 
+    #vedouci = db.Column(db.String(32), nullable=False) #kam dat toho vedoucího tedy? jak ho přidáváme tedka?
     voj_oznaceni = db.Column(db.String(20), unique=True, nullable=False)
-    zacatek_kurzu = db.Column(db.String(20), nullable=False) #db.DateTime dává chybu při zadanem datu TODO
-    konec_kurzu = db.Column(db.String(20), nullable=False) #db.DateTime
+    zacatek_kurzu = db.Column(db.DateTime, nullable=False) 
+    konec_kurzu = db.Column(db.DateTime, nullable=False) 
 
     osoby = db.relationship('Osoba', secondary=osoba_kurz, lazy='dynamic',backref=db.backref('kurzy', lazy='dynamic'))
 
@@ -35,4 +35,4 @@ class Kurz(db.Model):
 
 
     def __repr__(self):
-        return f"nazev: {self.nazev} misto: {self.misto} vedouci: {self.vedouci} voj_oznaceni: {self.voj_oznaceni} zacatek_kurzu: {self.zacatek_kurzu} konec_kurzu: {self.konec_kurzu}"
+        return f"nazev: {self.nazev} misto: {self.misto} voj_oznaceni: {self.voj_oznaceni} zacatek_kurzu: {self.zacatek_kurzu} konec_kurzu: {self.konec_kurzu}"
