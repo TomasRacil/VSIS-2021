@@ -3,7 +3,7 @@ import datetime
 
 
 class UserDto:
-    api = Namespace('user', description='user related operations')
+    api = Namespace('user', description='user related operations', decorators=[cors.crossdomain(origin="http://localhost:3000")])
     user_register = api.model('user_register', {
         'email': fields.String(required=True, description='user email address'),
         'username': fields.String(required=True, description='user username'),
@@ -28,7 +28,7 @@ class UserDto:
 
 
 class AuthDto:
-    api = Namespace('auth', description='authentication related operations')
+    api = Namespace('auth', description='authentication related operations', decorators=[cors.crossdomain(origin="http://localhost:3000")])
     user_auth = api.model('auth_details', {
         'email': fields.String(required=True, description='The email address'),
         'password': fields.String(required=True, description='The user password '),
@@ -36,7 +36,7 @@ class AuthDto:
 
 
 class OsobaDto:
-    api = Namespace('osoba', description='enpoint pro upravu osob')
+    api = Namespace('osoba', description='enpoint pro upravu osob', decorators=[cors.crossdomain(origin="http://localhost:3000")])
     osoba_post = api.model('osoba_post', {
         'jmeno': fields.String(required=True, description='krestni jmeno vojáka', example='Josef'),
         'prijmeni': fields.String(required=True, description='prijmeni vojáka', example='Omáčka'),
@@ -64,7 +64,7 @@ class TestDto:
 
 
 class KurzDto:
-    api = Namespace('kurz', description='enpoint pro upravu kurzu')
+    api = Namespace('kurz', description='enpoint pro upravu kurzu', decorators=[cors.crossdomain(origin="http://localhost:3000")])
     kurz_post = api.model('kurz_post', {
         'nazev': fields.String(required=True, description='uplný nazev kurzu', example='Strukturovaná kabeláž'),
         'misto': fields.String(required=True, description='kde kurz probíhá', example='Brno'),
@@ -89,7 +89,7 @@ class KurzDto:
 
 
 class UtvarDto:
-    api = Namespace('utvar', description='enpoint pro upravu utvaru')
+    api = Namespace('utvar', description='enpoint pro upravu utvaru', decorators=[cors.crossdomain(origin="http://localhost:3000")])
     utvar_post = api.model('utvar_post', {
         'nazev_utvaru': fields.String(required=True, description='uplný nazev utvaru', example='UNOB'),
         'lokace': fields.String(required=True, description='kde se utvar nachází', example='Brno'),
@@ -102,7 +102,7 @@ class UtvarDto:
     })
 
 class HodnostDto:
-    api = Namespace('hodnost', description='enpoint pro upravu hodnosti')
+    api = Namespace('hodnost', description='enpoint pro upravu hodnosti', decorators=[cors.crossdomain(origin="http://localhost:3000")])
     hodnost_post = api.model('hodnost_post', {  # změnit na post
         'nazev': fields.String(required=True, description='uplný nazev hodnosti', example='Poručík'),
         'hodnostni_sbor': fields.String(required=True, description='hodnostní sbor do kterého je zařazena hodnost', example='Nižší důstojník'),

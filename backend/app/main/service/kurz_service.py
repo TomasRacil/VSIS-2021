@@ -18,7 +18,7 @@ def save_new_kurz(data):
         save_changes(new_kurz)
         response_object = {
             'status': 'success',
-            'message': 'Kurz pridan.'
+            'message': 'Kurz added.'
         }
         return response_object, 200
         #return generate_token(new_user)
