@@ -24,27 +24,34 @@ const Home = () => {
   };
 
   useEffect(() => {
+    const abortControler = new AbortController();
+
     setTimeout(() => {
-      fetch("/api/user/")
+      fetch("/api/user/", { signal: abortControler.signal })
         .then((res) => {
-          console.log(res);
+          //console.log(res);
           if (!res.ok) {
             throw Error("could not fetch the data for that source");
           }
           return res.json();
         })
         .then((data) => {
-          console.log(data.data);
+          //console.log(data.data);
           setUsers(data.data);
           setIsPending(false);
           setError(null);
         })
         .catch((err) => {
-          setIsPending(false);
-          setError(err.message);
+          if (err.name === "AbortError") {
+            console.log("fetch aborted");
+          } else {
+            setIsPending(false);
+            setError(err.message);
+          }
         });
     }, 1000);
 
+    return () => abortControler.abort();
     //console.log("use effect ran");
   }, []); //only initial render
   //[name]); //declare watched item
@@ -54,7 +61,11 @@ const Home = () => {
       {error && <div>{error}</div>}
       {isPending && <div>Loading..</div>}
       {users && (
-        <UserList users={users} title="All Users" handleDelete={handleDelete} />
+        <UserList
+          users={users}
+          title="Some Users"
+          handleDelete={handleDelete}
+        />
       )}
       {/* <BlogList
         blogs={blogs.filter((blog) => blog.author === "mario")}

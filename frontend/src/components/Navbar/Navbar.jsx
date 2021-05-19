@@ -1,19 +1,21 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <nav className="navbar">
       <h1>Template for Frontend</h1>
       <div className="links">
-        <a href="/">Home</a>
-        <a
-          href="/create"
+        <Link to="/">Home</Link>
+        <Link
+          to="/register"
           style={{
             color: "white",
             backgroundColor: "#f1356d",
             borderRadius: "8px",
           }}
         >
-          New Blog
-        </a>
+          New User
+        </Link>
       </div>
     </nav>
   );
