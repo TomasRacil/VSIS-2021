@@ -3,6 +3,7 @@ import Home from "./components/Home/Home";
 import CreateUser from "./components/CreateUser/CreateUser";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserDetails from "./components/UserDetails/UserDetails";
+import Utvary from "./components/Utvary/Utvary";
 
 function App() {
   // function test() {
@@ -20,11 +21,15 @@ function App() {
           <Switch>
             <Route exact path="/" children={<Home />} />
             <Route exact path="/register" children={<CreateUser />} />
-            <Router exact path="/users/:id">
+            <Route path="/users/:id">
               <UserDetails />
-            </Router>
+            </Route>
+            <Route exact path="/utvary">
+              <Utvary></Utvary>
+            </Route>
           </Switch>
         </div>
+        {/* <Link to="/users/1">User 1</Link> */}
         {/* <button onClick={test}>Test</button> */}
       </div>
     </Router>
