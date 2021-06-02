@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const Utvary = () => {
   const [utvary, setUtvary] = useState(null);
-
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 

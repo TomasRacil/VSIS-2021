@@ -4,6 +4,8 @@ import CreateUser from "./components/CreateUser/CreateUser";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserDetails from "./components/UserDetails/UserDetails";
 import Utvary from "./components/Utvary/Utvary";
+import Osoby from "./components/Osoby/Osoby";
+import Hodnosti from "./components/Hodnosti/Hodnosti";
 
 function App() {
   // function test() {
@@ -26,6 +28,12 @@ function App() {
             </Route>
             <Route exact path="/utvary">
               <Utvary></Utvary>
+            </Route>
+            <Route exact path="/osoby">
+              <Osoby></Osoby>
+            </Route>
+            <Route exact path="/hodnosti">
+              <Hodnosti></Hodnosti>
             </Route>
           </Switch>
         </div>

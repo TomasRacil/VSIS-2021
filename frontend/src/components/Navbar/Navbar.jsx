@@ -17,6 +17,8 @@ const Navbar = () => {
           New User
         </Link>
         <Link to="/utvary">Utvary</Link>
+        <Link to="/osoby">Osoby</Link>
+        <Link to="/hodnosti">Hodnosti</Link>
       </div>
     </nav>
   );
