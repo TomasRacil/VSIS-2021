@@ -59,6 +59,9 @@ class OsobaDto:
         'utvar': fields.Integer(required=True, description='id vojakova utvaru', example=2994)
     })
 
+    osoba_delete = api.model('osoba_delete', {
+        
+    })
 
 class TestDto:
     api = Namespace('test', description='endpoint for testing')

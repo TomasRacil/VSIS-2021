@@ -41,8 +41,7 @@ Content-Type: application/json
 {
   "jmeno": "test",
   "prijmeni": "test",
-  "osobni_cislo": 1322424,
-  "hodnost_id":0
+  "osobni_cislo": 1322424
 }
 
 ###

@@ -6,6 +6,16 @@ const Osoby = () => {
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
+  const handleDelete = (id) => {
+    fetch("/api/osoba/" + id, {
+      method: "DELETE",
+    }).then((res) => {
+      console.log(res);
+    });
+    const newOsoby = osoby.filter((osoba) => osoba.id !== id);
+    setOsoby(newOsoby);
+  }; 
+
   useEffect(() => {
     const abortControler = new AbortController();
 
@@ -38,6 +48,14 @@ const Osoby = () => {
 
   return (
     <div className="Osoby">
+      <Link
+          to="/osoby/add"
+          style={{
+            color: "white",
+            backgroundColor: "#f1356d",
+            borderRadius: "8px",
+          }}
+        >Pridej osobu</Link>
       {error && <div>{error}</div>}
       {isPending && <div>Loading..</div>}
       {osoby && (
@@ -51,7 +69,7 @@ const Osoby = () => {
                 <h2>{osoba.osobni_cislo}</h2>
                 {/* <h2>{Hodnost.nazev.label("hodnost")}</h2>
                 <h2>{Utvar.cislo_vu.label("utvar")}</h2> */}
-                {/* <button onClick={() => handleDelete(user.public_id)}>Delete</button> */}
+                {<button onClick={() => handleDelete(osoba.id)}>Delete</button>}
               </Link>
             </div>
           ))}

@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 const AddUtvar = () => {
-  const [nazev_utvaru, setNazevUtvaru] = useState("email");
-  const [lokace, setLokace] = useState("username");
-  const [cislo_vu, setCisloVU] = useState("password");
+  const [nazev_utvaru, setNazevUtvaru] = useState("Univerzita Obrany");
+  const [lokace, setLokace] = useState("Brno");
+  const [cislo_vu, setCisloVU] = useState("2994");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,23 +24,22 @@ const AddUtvar = () => {
     <div className="create">
       <h2>Add new utvar</h2>
       <form onSubmit={handleSubmit}>
-        <label>nazev utvaru:</label>
+        <label>Název útvaru:</label>
         <input
-          type="text"
-          required
+          type="text" 
           value={nazev_utvaru}
           onChange={(e) => setNazevUtvaru(e.target.value)}
         />
-        <label>lokace:</label>
+        <label>Lokace:</label>
         <input
           type="text"
           required
           value={lokace}
           onChange={(e) => setLokace(e.target.value)}
         />
-        <label>cislo VU:</label>
+        <label>Číslo VÚ:</label>
         <input
-          type="text"
+          type="text" //number
           required
           value={cislo_vu}
           onChange={(e) => setCisloVU(e.target.value)}

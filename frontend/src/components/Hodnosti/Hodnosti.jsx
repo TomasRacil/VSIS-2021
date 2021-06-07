@@ -6,6 +6,16 @@ const Hodnosti = () => {
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
+  const handleDelete = (id) => {
+    fetch("/api/hodnost/" + id, {
+      method: "DELETE",
+    }).then((res) => {
+      console.log(res);
+    });
+    const newHodnosti = hodnosti.filter((hodnost) => hodnost.id !== id);
+    setHodnosti(newHodnosti);
+  }; 
+
   useEffect(() => {
     const abortControler = new AbortController();
 
@@ -38,17 +48,25 @@ const Hodnosti = () => {
 
   return (
     <div className="Hodnosti">
+      <Link
+          to="/hodnosti/add"
+          style={{
+            color: "white",
+            backgroundColor: "#f1356d",
+            borderRadius: "8px",
+          }}
+        >Pridej hodnost</Link>
       {error && <div>{error}</div>}
       {isPending && <div>Loading..</div>}
       {hodnosti && (
         <div className="blog-list">
           {/* <h2>{title}</h2> */}
           {hodnosti.map((hodnost) => (
-            <div className="blog-preview" key={hodnosti.id}>
+            <div className="blog-preview" key={hodnost.id}>
               <Link to={`/hodnost/${hodnost.id}`}>
                 <h2>{hodnost.nazev}</h2>
                 <p> {hodnost.hodnostni_sbor}</p>
-                {/* <button onClick={() => handleDelete(user.public_id)}>Delete</button> */}
+                {<button onClick={() => handleDelete(hodnost.id)}>Delete</button>}
               </Link>
             </div>
           ))}

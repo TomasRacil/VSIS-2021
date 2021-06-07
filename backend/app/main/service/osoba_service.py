@@ -23,9 +23,24 @@ def save_new_osoba(data):
         return response_object, 200
         #return generate_token(new_user)
 
+def delete_osoba(Osoba):
+        remove_object(Osoba)
+        response_object = {
+            'status': 'success',
+            'message': 'Osoba deleted.'
+        }
+        return response_object, 200
+
 def get_all_osoba():
     return Osoba.query.join(Hodnost).with_entities(Osoba.jmeno, Osoba.prijmeni, Osoba.osobni_cislo, Hodnost.nazev.label("hodnost"), Utvar.cislo_vu.label("utvar")).all()
 
+def get_a_osoba(osobni_cislo):
+    return Osoba.query.filter_by(osobni_cislo=osobni_cislo).first()
+
 def save_changes(data):
     db.session.add(data)
+    db.session.commit()
+
+def remove_object(data):
+    db.session.delete(data)
     db.session.commit()
