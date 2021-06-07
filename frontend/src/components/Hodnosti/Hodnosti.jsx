@@ -55,8 +55,7 @@ const Hodnosti = () => {
           color: "white",
           borderRadius: "8px",
         }}
-      >
-        Přidej hodnost
+      >Přidej hodnost
       </Link>
       {error && <div>{error}</div>}
       {isPending && <div>Loading..</div>}
@@ -67,9 +66,11 @@ const Hodnosti = () => {
             <div className="blog-preview" key={hodnost.id}>
               <Link to={`/hodnost/${hodnost.id}`}>
                 <h2>{hodnost.nazev}</h2>
-                <p> {hodnost.hodnostni_sbor}</p>
+                <h2> {hodnost.hodnostni_sbor}</h2>
               </Link>
-              {<button onClick={() => handleDelete(hodnost.id)}>Delete</button>}
+              {<button onClick={() => handleDelete(hodnost.id)}>
+                Delete
+              </button>}
             </div>
           ))}
         </div>

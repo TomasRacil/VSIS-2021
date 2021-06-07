@@ -67,9 +67,11 @@ const Osoby = () => {
                 <h2>{osoba.jmeno}</h2>
                 <h2>{osoba.prijmeni}</h2>
                 <h2>{osoba.osobni_cislo}</h2>
-                {/* <h2>{Hodnost.nazev.label("hodnost")}</h2>
-                <h2>{Utvar.cislo_vu.label("utvar")}</h2> */}
-                {<button onClick={() => handleDelete(osoba.id)}>Delete</button>}
+                <h2>{osoba.nazev}</h2>
+                <h2>{osoba.cislo_vu}</h2>
+                {<button onClick={() => handleDelete(osoba.id)}>
+                  Delete
+                  </button>}
               </Link>
             </div>
           ))}

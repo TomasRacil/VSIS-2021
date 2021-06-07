@@ -4,12 +4,12 @@ from flask_restx import Resource
 
 from ..util.dto import OsobaDto
 #from ..util.decorator import access_control #tohle je zatím příprava na pozdější kontrolu??? TODO
-from ..service.osoba_service import save_new_osoba, get_all_osoba, delete_osoba, get_a_osoba
+from ..service.osoba_service import save_new_osoba, get_all_osoba, get_a_osoba, remove_object
 
 api = OsobaDto.api
 _osoba_post = OsobaDto.osoba_post
 _osoba_get = OsobaDto.osoba_get
-_osoba_delete = OsobaDto.osoba_delete
+
 
 
 @api.route('/')
@@ -28,13 +28,13 @@ class UserList(Resource):
         data = request.json
         return save_new_osoba(data=data)
 
-    @api.response(200, 'Osoba successfully deleted')
+@api.route('/<osobni_cislo>')
+@api.param('osobni_cislo', 'Osoba identifier')
+class Osoba(Resource):
     @api.doc('delete osoba')
-    @api.expect(_osoba_delete, validate=True)
-    @api.marshal_with(_osoba_get)
     def delete(self, osobni_cislo):
         osoba = get_a_osoba(osobni_cislo)
         if not osoba:
             api.abort(404)
         else:
-            return delete_osoba(Osoba=Osoba), 200
+            return remove_object(osoba), 200

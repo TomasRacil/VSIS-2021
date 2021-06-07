@@ -21,8 +21,14 @@ def save_new_hodnost(data):
 
 def get_all_hodnost():
     # , Hodnost.id).all()
-    return Hodnost.query.with_entities(Hodnost.hodnostni_sbor, Hodnost.nazev).all()
+    return Hodnost.query.with_entities(Hodnost.id, Hodnost.hodnostni_sbor, Hodnost.nazev).all()
 
+def get_a_hodnost(id):
+    return Hodnost.query.filter_by(id=id).first()
+
+def remove_object(data):
+    db.session.delete(data)
+    db.session.commit()
 
 def save_changes(data):
     db.session.add(data)
