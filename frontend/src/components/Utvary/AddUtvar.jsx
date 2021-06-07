@@ -3,10 +3,11 @@ import { useState } from "react";
 const AddUtvar = () => {
   const [nazev_utvaru, setNazevUtvaru] = useState("email");
   const [lokace, setLokace] = useState("username");
-  const [cislo_vu, setCisloVU] = useState("password");
+  const [cislo_vu_str, setCisloVU] = useState("password");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    var cislo_vu = parseInt(cislo_vu_str);
     const utvar = { nazev_utvaru, lokace, cislo_vu };
     fetch("/api/utvar/", {
       method: "POST",
@@ -42,13 +43,13 @@ const AddUtvar = () => {
         <input
           type="text"
           required
-          value={cislo_vu}
+          value={cislo_vu_str}
           onChange={(e) => setCisloVU(e.target.value)}
         />
         <button>Register</button>
         <p>{nazev_utvaru}</p>
         <p>{lokace}</p>
-        <p>{cislo_vu}</p>
+        <p>{cislo_vu_str}</p>
       </form>
     </div>
   );
