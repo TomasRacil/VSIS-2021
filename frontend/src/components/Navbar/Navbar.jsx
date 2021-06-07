@@ -5,7 +5,13 @@ const Navbar = () => {
     <nav className="navbar">
       <h1>Template for Frontend</h1>
       <div className="links">
-        <Link to="/">Home</Link>
+        <Link to="/"
+        style={{
+          color: "white",
+          backgroundColor: "#f1356d",
+          borderRadius: "8px",
+        }}
+        >Home</Link>
         <Link
           to="/register"
           style={{
@@ -14,11 +20,28 @@ const Navbar = () => {
             borderRadius: "8px",
           }}
         >
-          New User
-        </Link>
-        <Link to="/utvary">Utvary</Link>
-        <Link to="/osoby">Osoby</Link>
-        <Link to="/hodnosti">Hodnosti</Link>
+        New User</Link>
+        <Link to="/utvary"
+        style={{
+          color: "white",
+          backgroundColor: "#f1356d",
+          borderRadius: "8px",
+        }}
+        >Utvary</Link>
+        <Link to="/osoby"
+        style={{
+          color: "white",
+          backgroundColor: "#f1356d",
+          borderRadius: "8px",
+        }}
+        >Osoby</Link>
+        <Link to="/hodnosti"
+        style={{
+          color: "white",
+          backgroundColor: "#f1356d",
+          borderRadius: "8px",
+        }}
+        >Hodnosti</Link>
       </div>
     </nav>
   );

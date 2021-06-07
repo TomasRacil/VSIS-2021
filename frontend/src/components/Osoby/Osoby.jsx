@@ -52,10 +52,10 @@ const Osoby = () => {
           to="/osoby/add"
           style={{
             color: "white",
-            backgroundColor: "#f1356d",
+            backgroundColor: "rgb(241, 53, 109)",
             borderRadius: "8px",
           }}
-        >Pridej osobu</Link>
+        >Přidej osobu</Link>
       {error && <div>{error}</div>}
       {isPending && <div>Loading..</div>}
       {osoby && (

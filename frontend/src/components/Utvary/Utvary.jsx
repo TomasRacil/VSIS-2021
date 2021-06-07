@@ -55,7 +55,7 @@ const Utvary = () => {
             backgroundColor: "#f1356d",
             borderRadius: "8px",
           }}
-        >Pridej utvar</Link>
+        >Přidej útvar</Link>
       {error && <div>{error}</div>}
       {isPending && <div>Loading..</div>}
       {utvary && (

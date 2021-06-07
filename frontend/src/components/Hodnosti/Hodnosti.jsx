@@ -51,11 +51,11 @@ const Hodnosti = () => {
       <Link
           to="/hodnosti/add"
           style={{
+            backgroundColor: "rgb(241, 53, 109)", 
             color: "white",
-            backgroundColor: "#f1356d",
             borderRadius: "8px",
           }}
-        >Pridej hodnost</Link>
+        >Přidej hodnost</Link>
       {error && <div>{error}</div>}
       {isPending && <div>Loading..</div>}
       {hodnosti && (
