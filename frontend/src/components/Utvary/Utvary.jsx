@@ -6,6 +6,16 @@ const Utvary = () => {
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
+  const handleDelete = (id) => {
+    fetch("/api/utvar/" + id, {
+      method: "DELETE",
+    }).then((res) => {
+      console.log(res);
+    });
+    const newUtvary = utvary.filter((utvar) => utvar.id !== id);
+    setUtvary(newUtvary);
+  }; 
+
   useEffect(() => {
     const abortControler = new AbortController();
 
@@ -48,7 +58,7 @@ const Utvary = () => {
               <Link to={`/utvar/${utvar.cislo_vu}`}>
                 <h2>{utvar.nazev_utvaru}</h2>
                 <p> {utvar.lokace}</p>
-                {/* <button onClick={() => handleDelete(user.public_id)}>Delete</button> */}
+                <button onClick={() => handleDelete(utvar.id)}>Delete</button>
               </Link>
             </div>
           ))}
