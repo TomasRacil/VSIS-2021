@@ -19,6 +19,18 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   const handleDelete = (id) => {
+    const someData = {
+      current_password: "string",
+    };
+    fetch("/api/user/" + id, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8", // Indicates the content
+      },
+      body: JSON.stringify(someData),
+    }).then((res) => {
+      console.log(res);
+    });
     const newUsers = users.filter((user) => user.public_id !== id);
     setUsers(newUsers);
   };

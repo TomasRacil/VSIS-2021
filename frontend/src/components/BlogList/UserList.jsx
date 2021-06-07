@@ -13,8 +13,8 @@ const UserList = ({ users, title, handleDelete }) => {
           <Link to={`/users/${user.public_id}`}>
             <h2>{user.email}</h2>
             {/* <p>Written by {user.username}</p> */}
-            <button onClick={() => handleDelete(user.public_id)}>Delete</button>
           </Link>
+          <button onClick={() => handleDelete(user.public_id)}>Delete</button>
         </div>
       ))}
     </div>
