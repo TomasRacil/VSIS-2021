@@ -2,6 +2,10 @@ from app.main import db
 from app.main.model.utvar import Utvar
 
 
+def get_a_utvar(cislo_vu):
+    return Utvar.query.filter_by(cislo_vu=cislo_vu).first()
+
+
 def save_new_utvar(data):
     utvar = Utvar.query.filter_by(cislo_vu=data['cislo_vu']).first()
     if not utvar:
@@ -22,6 +26,11 @@ def save_new_utvar(data):
 
 def get_all_utvar():
     return Utvar.query.with_entities(Utvar.cislo_vu, Utvar.lokace, Utvar.nazev_utvaru).all()
+
+
+def remove_object(data):
+    db.session.delete(data)
+    db.session.commit()
 
 
 def save_changes(data):

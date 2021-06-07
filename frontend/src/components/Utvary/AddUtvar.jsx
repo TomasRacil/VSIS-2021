@@ -7,7 +7,7 @@ const AddUtvar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const utvar = { nazev_utvaru, lokace, cislo_vu };
+    const utvar = { nazev_utvaru, lokace, cislo_vu: parseInt(cislo_vu) };
     fetch("/api/utvar/", {
       method: "POST",
       headers: {
@@ -26,7 +26,7 @@ const AddUtvar = () => {
       <form onSubmit={handleSubmit}>
         <label>Název útvaru:</label>
         <input
-          type="text" 
+          type="text"
           value={nazev_utvaru}
           onChange={(e) => setNazevUtvaru(e.target.value)}
         />
@@ -39,7 +39,7 @@ const AddUtvar = () => {
         />
         <label>Číslo VÚ:</label>
         <input
-          type="text" //number
+          type="number" //number
           required
           value={cislo_vu}
           onChange={(e) => setCisloVU(e.target.value)}

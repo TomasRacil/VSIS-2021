@@ -14,7 +14,7 @@ const Hodnosti = () => {
     });
     const newHodnosti = hodnosti.filter((hodnost) => hodnost.id !== id);
     setHodnosti(newHodnosti);
-  }; 
+  };
 
   useEffect(() => {
     const abortControler = new AbortController();
@@ -49,13 +49,15 @@ const Hodnosti = () => {
   return (
     <div className="Hodnosti">
       <Link
-          to="/hodnosti/add"
-          style={{
-            backgroundColor: "rgb(241, 53, 109)", 
-            color: "white",
-            borderRadius: "8px",
-          }}
-        >Přidej hodnost</Link>
+        to="/hodnosti/add"
+        style={{
+          backgroundColor: "rgb(241, 53, 109)",
+          color: "white",
+          borderRadius: "8px",
+        }}
+      >
+        Přidej hodnost
+      </Link>
       {error && <div>{error}</div>}
       {isPending && <div>Loading..</div>}
       {hodnosti && (
@@ -66,8 +68,8 @@ const Hodnosti = () => {
               <Link to={`/hodnost/${hodnost.id}`}>
                 <h2>{hodnost.nazev}</h2>
                 <p> {hodnost.hodnostni_sbor}</p>
-                {<button onClick={() => handleDelete(hodnost.id)}>Delete</button>}
               </Link>
+              {<button onClick={() => handleDelete(hodnost.id)}>Delete</button>}
             </div>
           ))}
         </div>

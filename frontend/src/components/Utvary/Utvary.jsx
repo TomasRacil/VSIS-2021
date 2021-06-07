@@ -12,9 +12,9 @@ const Utvary = () => {
     }).then((res) => {
       console.log(res);
     });
-    const newUtvary = utvary.filter((utvar) => utvar.id !== id);
+    const newUtvary = utvary.filter((utvar) => utvar.cislo_vu !== id);
     setUtvary(newUtvary);
-  }; 
+  };
 
   useEffect(() => {
     const abortControler = new AbortController();
@@ -49,13 +49,15 @@ const Utvary = () => {
   return (
     <div className="Utvary">
       <Link
-          to="/utvary/add"
-          style={{
-            color: "white",
-            backgroundColor: "#f1356d",
-            borderRadius: "8px",
-          }}
-        >Přidej útvar</Link>
+        to="/utvary/add"
+        style={{
+          color: "white",
+          backgroundColor: "#f1356d",
+          borderRadius: "8px",
+        }}
+      >
+        Přidej útvar
+      </Link>
       {error && <div>{error}</div>}
       {isPending && <div>Loading..</div>}
       {utvary && (
@@ -66,7 +68,9 @@ const Utvary = () => {
               <Link to={`/utvar/${utvar.cislo_vu}`}>
                 <h2>{utvar.nazev_utvaru}</h2>
                 <p> {utvar.lokace}</p>
-                <button onClick={() => handleDelete(utvar.id)}>Delete</button>
+                <button onClick={() => handleDelete(utvar.cislo_vu)}>
+                  Delete
+                </button>
               </Link>
             </div>
           ))}
