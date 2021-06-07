@@ -5,24 +5,24 @@ const AddUtvar = () => {
   const [lokace, setLokace] = useState("username");
   const [cislo_vu, setCisloVU] = useState("password");
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     const user = { email, username, password };
-//     fetch("/api/user/", {
-//       method: "POST",
-//       headers: {
-//         "Content-type": "application/json; charset=UTF-8", // Indicates the content
-//       },
-//       body: JSON.stringify(user),
-//     }).then((res) => {
-//       console.log("New user added");
-//       console.log(res);
-//     });
-//   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const utvar = { nazev_utvaru, lokace, cislo_vu };
+    fetch("/api/utvar/", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8", // Indicates the content
+      },
+      body: JSON.stringify(utvar),
+    }).then((res) => {
+      console.log("New utvar added");
+      console.log(res);
+    });
+  };
 
   return (
     <div className="create">
-      <h2>Add new user</h2>
+      <h2>Add new utvar</h2>
       <form onSubmit={handleSubmit}>
         <label>nazev utvaru:</label>
         <input
