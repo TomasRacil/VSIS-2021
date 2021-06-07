@@ -48,6 +48,14 @@ const Utvary = () => {
 
   return (
     <div className="Utvary">
+      <Link
+          to="/utvary/add"
+          style={{
+            color: "white",
+            backgroundColor: "#f1356d",
+            borderRadius: "8px",
+          }}
+        >Pridej utvar</Link>
       {error && <div>{error}</div>}
       {isPending && <div>Loading..</div>}
       {utvary && (

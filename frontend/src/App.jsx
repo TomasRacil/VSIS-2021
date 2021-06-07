@@ -6,6 +6,7 @@ import UserDetails from "./components/UserDetails/UserDetails";
 import Utvary from "./components/Utvary/Utvary";
 import Osoby from "./components/Osoby/Osoby";
 import Hodnosti from "./components/Hodnosti/Hodnosti";
+import AddUtvar from "./components/Utvary/AddUtvar";
 
 function App() {
   // function test() {
@@ -34,6 +35,9 @@ function App() {
             </Route>
             <Route exact path="/hodnosti">
               <Hodnosti></Hodnosti>
+            </Route>
+            <Route exact path="/utvary/add">
+              <AddUtvar></AddUtvar>
             </Route>
           </Switch>
         </div>
