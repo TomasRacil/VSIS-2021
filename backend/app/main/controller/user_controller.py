@@ -63,6 +63,7 @@ class User(Resource):
     @api.expect(_user_delete, validate=True)
     @api.marshal_with(_user_get)
     def delete(self, public_id):
+        """Delete user given its identifier and current password"""
         user = get_a_user(public_id)
         if not user:
             api.abort(404)
