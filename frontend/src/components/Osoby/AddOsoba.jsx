@@ -1,15 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AddOsoba = () => {
   const [jmeno, setJmeno] = useState("Karel");
   const [prijmeni, setPrijmeni] = useState("Novák");
   const [osobni_cislo, setOsobniCislo] = useState("12312312");
-  const [nazev, setNazev] = useState("vojín");
-  const [cislo_vu, setCisloVU] = useState("1234");
+  const [cislo_vu, setCisloVU] = useState();
+  const [utvary, setUtvary] = useState();
+
+  const [isPending, setIsPending] = useState(true);
+  const [error, setError] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const osoba = { jmeno, prijmeni, osobni_cislo: parseInt(osobni_cislo), nazev, cislo_vu: parseInt(cislo_vu) };
+    const osoba = {
+      jmeno,
+      prijmeni,
+      osobni_cislo: parseInt(osobni_cislo),
+      utvar: parseInt(cislo_vu),
+    };
     fetch("/api/osoba/", {
       method: "POST",
       headers: {
@@ -21,6 +29,34 @@ const AddOsoba = () => {
       console.log(res);
     });
   };
+
+  useEffect(() => {
+    const abortControler = new AbortController();
+
+    fetch("/api/utvar/", { signal: abortControler.signal })
+      .then((res) => {
+        if (!res.ok) {
+          throw Error("could not fetch the utvary from that source");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        //console.log(data));
+        setUtvary(data.data);
+        setIsPending(false);
+        setError(null);
+      })
+      .catch((err) => {
+        if (err.name === "AbortError") {
+          console.log("fetch aborted");
+        } else {
+          setIsPending(false);
+          setError(err.message);
+        }
+      });
+
+    return () => abortControler.abort();
+  }, []);
 
   return (
     <div className="create">
@@ -46,25 +82,21 @@ const AddOsoba = () => {
           value={osobni_cislo}
           onChange={(e) => setOsobniCislo(e.target.value)}
         />
-        <label>Hodnost:</label>
-        <input
-          type="text"
-          required
-          value={nazev}
-          onChange={(e) => setNazev(e.target.value)}
-        />
-        <label>Číslo útvaru:</label>
-        <input
-          type="number"
-          required
-          value={cislo_vu}
-          onChange={(e) => setCisloVU(e.target.value)}
-        />
+        <label>Utvar:</label>
+        <select value={cislo_vu} onChange={(e) => setCisloVU(e.target.value)}>
+          {error && <option>{error}</option>}
+          {isPending && <option>Loading..</option>}
+          {utvary &&
+            utvary.map((u) => (
+              <option key={u.cislo_vu} value={u.cislo_vu}>
+                {u.nazev_utvaru}
+              </option>
+            ))}
+        </select>
         <button>Register</button>
         <p>{jmeno}</p>
         <p>{prijmeni}</p>
         <p>{osobni_cislo}</p>
-        <p>{nazev}</p>
         <p>{cislo_vu}</p>
       </form>
     </div>
