@@ -27,8 +27,8 @@ def save_new_osoba(data):
 def get_all_osoba():
     return Osoba.query.join(Hodnost).with_entities(Osoba.id, Osoba.jmeno, Osoba.prijmeni, Osoba.osobni_cislo, Hodnost.nazev.label("hodnost"), Utvar.cislo_vu.label("utvar")).all()
 
-def get_a_osoba(osobni_cislo):
-    return Osoba.query.filter_by(osobni_cislo=osobni_cislo).first()
+def get_a_osoba(id):
+    return Osoba.query.filter_by(id=id).first()
 
 def save_changes(data):
     db.session.add(data)

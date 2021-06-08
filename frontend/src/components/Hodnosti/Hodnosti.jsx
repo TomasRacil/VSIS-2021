@@ -66,7 +66,7 @@ const Hodnosti = () => {
             <div className="blog-preview" key={hodnost.id}>
               <Link to={`/hodnost/${hodnost.id}`}>
                 <h2>{hodnost.nazev}</h2>
-                <h2> {hodnost.hodnostni_sbor}</h2>
+                <h2>{hodnost.hodnostni_sbor}</h2>
               </Link>
               {<button onClick={() => handleDelete(hodnost.id)}>
                 Delete

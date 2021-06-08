@@ -2,7 +2,9 @@ from .. import db
 
 
 class Osoba(db.Model):
-    """Model pro ukládání jenotlivých jmen, příjmení, osobní číslo, FK-hodnost, FK-kurz, FK-utvar."""
+    """
+    Model pro ukládání jenotlivých jmen, příjmení, osobní číslo, FK-hodnost, FK-kurz, FK-utvar.
+    """
     __tablename__ = "osoba"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

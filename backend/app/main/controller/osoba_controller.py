@@ -1,4 +1,3 @@
-from app.main.model.osoba import Osoba
 from flask import request
 from flask_restx import Resource
 
@@ -13,7 +12,7 @@ _osoba_get = OsobaDto.osoba_get
 
 
 @api.route('/')
-class UserList(Resource):
+class OsobaList(Resource):
     @api.doc('list_of_registered_osob')
     @api.marshal_list_with(_osoba_get, envelope='data')
     def get(self):
@@ -28,12 +27,12 @@ class UserList(Resource):
         data = request.json
         return save_new_osoba(data=data)
 
-@api.route('/<osobni_cislo>')
-@api.param('osobni_cislo', 'Osoba identifier')
+@api.route('/<id>')
+@api.param('id', 'Osoba identifier')
 class Osoba(Resource):
     @api.doc('delete osoba')
-    def delete(self, osobni_cislo):
-        osoba = get_a_osoba(osobni_cislo)
+    def delete(self, id):
+        osoba = get_a_osoba(id)
         if not osoba:
             api.abort(404)
         else:

@@ -67,8 +67,6 @@ const Osoby = () => {
                 <h2>{osoba.jmeno}</h2>
                 <h2>{osoba.prijmeni}</h2>
                 <h2>{osoba.osobni_cislo}</h2>
-                <h2>{osoba.nazev}</h2>
-                <h2>{osoba.cislo_vu}</h2>
                 {<button onClick={() => handleDelete(osoba.id)}>
                   Delete
                   </button>}

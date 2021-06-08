@@ -6,6 +6,8 @@ const AddOsoba = () => {
   const [osobni_cislo, setOsobniCislo] = useState("12312312");
   const [cislo_vu, setCisloVU] = useState();
   const [utvary, setUtvary] = useState();
+  const [hodnosti, setHodnosti] = useState();
+  const [nazev, setNazev] = useState();
 
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
@@ -17,6 +19,7 @@ const AddOsoba = () => {
       prijmeni,
       osobni_cislo: parseInt(osobni_cislo),
       utvar: parseInt(cislo_vu),
+      hodnosti: nazev
     };
     fetch("/api/osoba/", {
       method: "POST",
@@ -58,13 +61,41 @@ const AddOsoba = () => {
     return () => abortControler.abort();
   }, []);
 
+  useEffect(() => {
+    const abortControler = new AbortController();
+
+    fetch("/api/hodnost/", { signal: abortControler.signal })
+      .then((res) => {
+        if (!res.ok) {
+          throw Error("could not fetch the hodnosti from that source");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        //console.log(data));
+        setHodnosti(data.data);
+        setIsPending(false);
+        setError(null);
+      })
+      .catch((err) => {
+        if (err.name === "AbortError") {
+          console.log("fetch aborted");
+        } else {
+          setIsPending(false);
+          setError(err.message);
+        }
+      });
+
+    return () => abortControler.abort();
+  }, []);
+
   return (
     <div className="create">
       <h2>Add new osoba</h2>
       <form onSubmit={handleSubmit}>
         <label>Jméno:</label>
         <input
-          type="text" //number
+          type="text" 
           value={jmeno}
           onChange={(e) => setJmeno(e.target.value)}
         />
@@ -93,11 +124,23 @@ const AddOsoba = () => {
               </option>
             ))}
         </select>
+        <label>Hodnost:</label>
+        <select value={nazev} onChange={(e) => setNazev(e.target.value)}>
+          {error && <option>{error}</option>}
+          {isPending && <option>Loading..</option>}
+          {hodnosti &&
+            hodnosti.map((u) => (
+              <option key={u.nazev} value={u.nazev}>
+                {u.nazev}
+              </option>
+            ))}
+        </select>
         <button>Register</button>
         <p>{jmeno}</p>
         <p>{prijmeni}</p>
         <p>{osobni_cislo}</p>
         <p>{cislo_vu}</p>
+        <p>{nazev}</p>
       </form>
     </div>
   );

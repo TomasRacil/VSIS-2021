@@ -7,7 +7,11 @@ const AddUtvar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const utvar = { nazev_utvaru, lokace, cislo_vu: parseInt(cislo_vu) };
+    const utvar = { 
+      nazev_utvaru, 
+      lokace, 
+      cislo_vu: parseInt(cislo_vu) 
+    };
     fetch("/api/utvar/", {
       method: "POST",
       headers: {

@@ -6,7 +6,10 @@ const AddHodnost = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const hodnost = { nazev, hodnostni_sbor };
+    const hodnost = { 
+      nazev, 
+      hodnostni_sbor 
+    };
     fetch("/api/hodnost/", {
       method: "POST",
       headers: {
