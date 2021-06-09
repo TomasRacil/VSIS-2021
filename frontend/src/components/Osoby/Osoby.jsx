@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+
 const Osoby = () => {
   const [osoby, setOsoby] = useState(null);
   const [isPending, setIsPending] = useState(true);
@@ -55,22 +56,23 @@ const Osoby = () => {
           backgroundColor: "rgb(241, 53, 109)",
           borderRadius: "8px",
         }}
-      >
-        Přidej osobu
+      >Přidej osobu
       </Link>
       {error && <div>{error}</div>}
       {isPending && <div>Loading..</div>}
       {osoby && (
         <div className="blog-list">
           {/* <h2>{title}</h2> */}
-          {osoby.map((osoba) => (
-            <div className="blog-preview" key={osoba.id}>
+          {osoby.map((osoba, index) => (
+            <div className="blog-preview" key={index}>
               <Link to={`/osoba/${osoba.id}`}>
                 <h2>{osoba.jmeno}</h2>
                 <h2>{osoba.prijmeni}</h2>
                 <p>{osoba.osobni_cislo}</p>
               </Link>
-              {<button onClick={() => handleDelete(osoba.id)}>Delete</button>}
+              {<button onClick={() => handleDelete(osoba.id)}>
+                Delete
+              </button>}
             </div>
           ))}
         </div>

@@ -16,7 +16,7 @@ class Kurz(db.Model):
     __tablename__="kurz"
 
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     nazev = db.Column(db.String(40), unique=True, nullable=False) 
     misto = db.Column(db.String(20), nullable=False)
     #vedouci = db.Column(db.String(32), nullable=False) #kam dat toho vedoucího tedy? jak ho přidáváme tedka?

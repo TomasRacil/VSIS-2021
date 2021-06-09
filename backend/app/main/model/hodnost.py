@@ -5,7 +5,7 @@ class Hodnost(db.Model):
     Model pro ukládání jenotlivých hodností a hodnostních sborů.
     """
     __tablename__="hodnost"
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     nazev = db.Column(db.String(20), unique=True, nullable=False) 
     hodnostni_sbor = db.Column(db.String(20), nullable=False)
 

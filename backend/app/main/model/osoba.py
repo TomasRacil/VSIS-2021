@@ -7,7 +7,7 @@ class Osoba(db.Model):
     """
     __tablename__ = "osoba"
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     jmeno = db.Column(db.String(20), nullable=False)
     prijmeni = db.Column(db.String(64), nullable=False)
     osobni_cislo = db.Column(db.Integer, unique=True, nullable=False)
