@@ -7,7 +7,7 @@ const Kurzy = () => {
   const [error, setError] = useState(null);
 
   const handleDelete = (id) => {
-    fetch("/api/kurzy/" + id, {
+    fetch("/api/kurz/" + id, {
       method: "DELETE",
     }).then((res) => {
       console.log(res);
