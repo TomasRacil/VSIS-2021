@@ -7,7 +7,7 @@ const AddOsoba = () => {
   const [cislo_vu, setCisloVU] = useState();
   const [utvary, setUtvary] = useState();
   const [hodnosti, setHodnosti] = useState();
-  const [nazev, setNazev] = useState();
+  const [id, setID] = useState();
 
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
@@ -19,7 +19,7 @@ const AddOsoba = () => {
       prijmeni,
       osobni_cislo: parseInt(osobni_cislo),
       utvar: parseInt(cislo_vu),
-      hodnost: nazev,
+      hodnost: parseInt(id),
     };
     fetch("/api/osoba/", {
       method: "POST",
@@ -102,7 +102,7 @@ const AddOsoba = () => {
         <label>Příjmení:</label>
         <input
           type="text"
-          integer
+          
           required
           value={prijmeni}
           onChange={(e) => setPrijmeni(e.target.value)}
@@ -126,7 +126,7 @@ const AddOsoba = () => {
             ))}
         </select>
         <label>Hodnost:</label>
-        <select value={nazev} onChange={(e) => setNazev(e.target.value)}>
+        <select value={id} onChange={(e) => setID(e.target.value)}>
           {error && <option>{error}</option>}
           {isPending && <option>Loading..</option>}
           {hodnosti &&
@@ -141,7 +141,7 @@ const AddOsoba = () => {
         <p>{prijmeni}</p>
         <p>{osobni_cislo}</p>
         <p>{cislo_vu}</p>
-        <p>{nazev}</p>
+        <p>{id}</p>
       </form>
     </div>
   );
