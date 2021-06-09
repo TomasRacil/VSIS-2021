@@ -68,10 +68,10 @@ const Utvary = () => {
               <Link to={`/utvar/${utvar.cislo_vu}`}>
                 <h2>{utvar.nazev_utvaru}</h2>
                 <p> {utvar.lokace}</p>
-                <button onClick={() => handleDelete(utvar.cislo_vu)}>
-                  Delete
-                </button>
               </Link>
+              <button onClick={() => handleDelete(utvar.cislo_vu)}>
+                Delete
+              </button>
             </div>
           ))}
         </div>

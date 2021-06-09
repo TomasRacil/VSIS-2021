@@ -19,7 +19,7 @@ const AddOsoba = () => {
       prijmeni,
       osobni_cislo: parseInt(osobni_cislo),
       utvar: parseInt(cislo_vu),
-      hodnosti: nazev
+      hodnost: nazev,
     };
     fetch("/api/osoba/", {
       method: "POST",
@@ -95,13 +95,14 @@ const AddOsoba = () => {
       <form onSubmit={handleSubmit}>
         <label>Jméno:</label>
         <input
-          type="text" 
+          type="text"
           value={jmeno}
           onChange={(e) => setJmeno(e.target.value)}
         />
         <label>Příjmení:</label>
         <input
           type="text"
+          integer
           required
           value={prijmeni}
           onChange={(e) => setPrijmeni(e.target.value)}
@@ -130,7 +131,7 @@ const AddOsoba = () => {
           {isPending && <option>Loading..</option>}
           {hodnosti &&
             hodnosti.map((u) => (
-              <option key={u.nazev} value={u.nazev}>
+              <option key={u.id} value={u.id}>
                 {u.nazev}
               </option>
             ))}

@@ -14,7 +14,7 @@ const Osoby = () => {
     });
     const newOsoby = osoby.filter((osoba) => osoba.id !== id);
     setOsoby(newOsoby);
-  }; 
+  };
 
   useEffect(() => {
     const abortControler = new AbortController();
@@ -49,13 +49,15 @@ const Osoby = () => {
   return (
     <div className="Osoby">
       <Link
-          to="/osoby/add"
-          style={{
-            color: "white",
-            backgroundColor: "rgb(241, 53, 109)",
-            borderRadius: "8px",
-          }}
-        >Přidej osobu</Link>
+        to="/osoby/add"
+        style={{
+          color: "white",
+          backgroundColor: "rgb(241, 53, 109)",
+          borderRadius: "8px",
+        }}
+      >
+        Přidej osobu
+      </Link>
       {error && <div>{error}</div>}
       {isPending && <div>Loading..</div>}
       {osoby && (
@@ -66,11 +68,9 @@ const Osoby = () => {
               <Link to={`/osoba/${osoba.id}`}>
                 <h2>{osoba.jmeno}</h2>
                 <h2>{osoba.prijmeni}</h2>
-                <h2>{osoba.osobni_cislo}</h2>
-                {<button onClick={() => handleDelete(osoba.id)}>
-                  Delete
-                  </button>}
+                <p>{osoba.osobni_cislo}</p>
               </Link>
+              {<button onClick={() => handleDelete(osoba.id)}>Delete</button>}
             </div>
           ))}
         </div>
