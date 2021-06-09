@@ -7,7 +7,7 @@ const AddOsoba = () => {
   const [cislo_vu, setCisloVU] = useState();
   const [utvary, setUtvary] = useState();
   const [hodnosti, setHodnosti] = useState();
-  const [id, setID] = useState();
+  const [nazev, setNazev] = useState();
 
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
@@ -19,7 +19,7 @@ const AddOsoba = () => {
       prijmeni,
       osobni_cislo: parseInt(osobni_cislo),
       utvar: parseInt(cislo_vu),
-      hodnost: parseInt(id),
+      hodnost: nazev,
     };
     fetch("/api/osoba/", {
       method: "POST",
@@ -126,12 +126,12 @@ const AddOsoba = () => {
             ))}
         </select>
         <label>Hodnost:</label>
-        <select value={id} onChange={(e) => setID(e.target.value)}>
+        <select value={nazev} onChange={(e) => setNazev(e.target.value)}>
           {error && <option>{error}</option>}
           {isPending && <option>Loading..</option>}
           {hodnosti &&
             hodnosti.map((u) => (
-              <option key={u.id} value={u.id}>
+              <option key={u.nazev} value={u.nazev}>
                 {u.nazev}
               </option>
             ))}
@@ -141,7 +141,7 @@ const AddOsoba = () => {
         <p>{prijmeni}</p>
         <p>{osobni_cislo}</p>
         <p>{cislo_vu}</p>
-        <p>{id}</p>
+        <p>{nazev}</p>
       </form>
     </div>
   );
