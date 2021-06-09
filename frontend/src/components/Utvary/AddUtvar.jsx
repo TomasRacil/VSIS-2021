@@ -31,6 +31,7 @@ const AddUtvar = () => {
         <label>Název útvaru:</label>
         <input
           type="text"
+          required
           value={nazev_utvaru}
           onChange={(e) => setNazevUtvaru(e.target.value)}
         />

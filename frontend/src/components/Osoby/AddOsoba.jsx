@@ -96,13 +96,13 @@ const AddOsoba = () => {
         <label>Jméno:</label>
         <input
           type="text"
+          required
           value={jmeno}
           onChange={(e) => setJmeno(e.target.value)}
         />
         <label>Příjmení:</label>
         <input
           type="text"
-          
           required
           value={prijmeni}
           onChange={(e) => setPrijmeni(e.target.value)}

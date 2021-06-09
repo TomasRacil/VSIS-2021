@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 const AddKurz = () => {
-  const [nazev, setNazev] = useState("Vytváření web. stránek");
+  const [nazev, setNazev] = useState("Název");
   const [misto, setMisto] = useState("Praha");
-  const [voj_oznaceni, setVojOznaceni] = useState("S12345");
+  const [voj_oznaceni, setVojOznaceni] = useState("S_123");
   const [zacatek_kurzu, setZacatekKurzu] = useState();
   const [konec_kurzu, setKonecKurzu] = useState();
   
@@ -36,6 +36,7 @@ const AddKurz = () => {
         <label>Název kurzu:</label>
         <input
           type="text"
+          required
           value={nazev}
           onChange={(e) => setNazev(e.target.value)}
         />
@@ -55,15 +56,15 @@ const AddKurz = () => {
         />
         <label>Začátek kurzu:</label>
         <input
-          type="date" 
+          type="date"
           required
           value={zacatek_kurzu}
           onChange={(e) => setZacatekKurzu(e.target.value)}
         />
         <label>Konec kurzu:</label>
         <input
-          type="date" 
-          required
+          type="date"
+          required 
           value={konec_kurzu}
           onChange={(e) => setKonecKurzu(e.target.value)}
         />

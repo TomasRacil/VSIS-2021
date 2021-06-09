@@ -1,4 +1,5 @@
 from .. import db
+from datetime import datetime
 
 
 osoba_kurz = db.Table('osoba_kurz',
@@ -20,8 +21,8 @@ class Kurz(db.Model):
     misto = db.Column(db.String(20), nullable=False)
     #vedouci = db.Column(db.String(32), nullable=False) #kam dat toho vedoucího tedy? jak ho přidáváme tedka?
     voj_oznaceni = db.Column(db.String(20), unique=True, nullable=False)
-    zacatek_kurzu = db.Column(db.DateTime, nullable=False) 
-    konec_kurzu = db.Column(db.DateTime, nullable=False) 
+    zacatek_kurzu = db.Column(db.Date, nullable=False) 
+    konec_kurzu = db.Column(db.Date, nullable=False) 
 
     osoby = db.relationship('Osoba', secondary=osoba_kurz, lazy='dynamic',backref=db.backref('kurzy', lazy='dynamic'))
 

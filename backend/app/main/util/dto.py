@@ -1,5 +1,5 @@
 from flask_restx import Namespace, fields, cors
-import datetime
+from datetime import datetime
 
 
 class UserDto:
@@ -75,9 +75,9 @@ class KurzDto:
         # 'vedouci': fields.String(required=True, description='celé jméno vedoucího', example='Antonín Voříšek'),
         'voj_oznaceni': fields.String(required=True, description='vojenské označení', example='SK_3098'),
         # required=True, DateTime
-        'zacatek_kurzu': fields.DateTime(description='začátek kurzu', example=str(datetime.datetime.now())),
+        'zacatek_kurzu': fields.Date(description='začátek kurzu', example=''),
         # required=True, DateTime, TODO
-        'konec_kurzu': fields.DateTime(description='konec kurzu', example=str(datetime.datetime.now()))
+        'konec_kurzu': fields.Date(description='konec kurzu', example='')
     })
     kurz_get = api.model('kurz_get', {
         'id': fields.Integer(description='identifikator', example=1),
@@ -86,9 +86,9 @@ class KurzDto:
         # 'vedouci': fields.String(required=True, description='celé jméno vedoucího', example='Antonín Voříšek'),
         'voj_oznaceni': fields.String(required=True, description='vojenské označení', example='SK_3098'),
         # required=True, DateTime
-        'zacatek_kurzu': fields.DateTime(description='začátek kurzu', example=str(datetime.datetime.now())),
+        'zacatek_kurzu': fields.Date(description='začátek kurzu', example=''),
         # required=True, DateTime, TODO
-        'konec_kurzu': fields.DateTime(description='konec kurzu', example=str(datetime.datetime.now()))
+        'konec_kurzu': fields.Date(description='konec kurzu', example='')
     })
 
 
