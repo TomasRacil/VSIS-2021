@@ -23,8 +23,16 @@ def save_new_kurz(data):
         return response_object, 200
         #return generate_token(new_user)
 
+def get_a_kurz(id):
+    return Kurz.query.filter_by(id=id).first()
+
 def get_all_kurz():
     return Kurz.query.with_entities(Kurz.nazev, Kurz.misto, Kurz.voj_oznaceni, Kurz.zacatek_kurzu, Kurz.konec_kurzu).all()  
+
+
+def remove_object(data):
+    db.session.delete(data)
+    db.session.commit()
 
 def save_changes(data):
    db.session.add(data)

@@ -3,7 +3,7 @@ from flask_restx import Resource
 
 from ..util.dto import KurzDto
 #from ..util.decorator import access_control
-from ..service.kurz_service import save_new_kurz, get_all_kurz
+from ..service.kurz_service import save_new_kurz, get_all_kurz, get_a_kurz, remove_object
 
 api = KurzDto.api
 _kurz_post = KurzDto.kurz_post
@@ -25,3 +25,14 @@ class UserList(Resource):
         """Creates a new Kurz"""
         data = request.json
         return save_new_kurz(data=data)
+
+@api.route('/<id>')
+@api.param('id', 'Kurz identifier')
+class Kurz(Resource):
+    @api.doc('delete kurz')
+    def delete(self, id):
+        kurz = get_a_kurz(id)
+        if not kurz:
+            api.abort(404)
+        else:
+            return remove_object(kurz), 200

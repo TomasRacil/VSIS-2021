@@ -9,6 +9,8 @@ import Hodnosti from "./components/Hodnosti/Hodnosti";
 import AddUtvar from "./components/Utvary/AddUtvar";
 import AddHodnost from "./components/Hodnosti/AddHodnost";
 import AddOsoba from "./components/Osoby/AddOsoba";
+import Kurzy from "./components/Kurzy/Kurzy";
+import AddKurzy from "./components/Kurzy/AddKurzy";
 
 function App() {
   // function test() {
@@ -46,6 +48,12 @@ function App() {
             </Route>
             <Route exact path="/osoby/add">
               <AddOsoba></AddOsoba>
+            </Route>
+            <Route exact path="/kurzy">
+              <Kurzy></Kurzy>
+            </Route>
+            <Route exact path="/kurzy/add">
+              <AddKurzy></AddKurzy>
             </Route>
           </Switch>
         </div>

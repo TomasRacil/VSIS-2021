@@ -20,28 +20,40 @@ const Navbar = () => {
             borderRadius: "8px",
           }}
         >
-        New User</Link>
+        New User
+        </Link>
         <Link to="/utvary"
         style={{
           color: "white",
           backgroundColor: "#f1356d",
           borderRadius: "8px",
         }}
-        >Utvary</Link>
+        >Utvary
+        </Link>
         <Link to="/osoby"
         style={{
           color: "white",
           backgroundColor: "#f1356d",
           borderRadius: "8px",
         }}
-        >Osoby</Link>
+        >Osoby
+        </Link>
         <Link to="/hodnosti"
         style={{
           color: "white",
           backgroundColor: "#f1356d",
           borderRadius: "8px",
         }}
-        >Hodnosti</Link>
+        >Hodnosti
+        </Link>
+        <Link to="/kurzy"
+        style={{
+          color: "white",
+          backgroundColor: "#f1356d",
+          borderRadius: "8px",
+        }}
+        >Kurzy
+        </Link>
       </div>
     </nav>
   );
