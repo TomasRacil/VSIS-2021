@@ -1,14 +1,20 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const CreateUser = () => {
   const [email, setEmail] = useState("email");
   const [username, setUsername] = useState("username");
   const [password, setPassword] = useState("password");
   const [password2, setPassword2] = useState("password2");
+  const [isPending, setIsPending] = useState(false);
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = { email, username, password };
+
+    setIsPending(true);
+
     fetch("/api/user/", {
       method: "POST",
       headers: {
@@ -17,7 +23,8 @@ const CreateUser = () => {
       body: JSON.stringify(user),
     }).then((res) => {
       console.log("New user added");
-      console.log(res);
+      setIsPending(false);
+      history.push("/");
     });
   };
 
@@ -53,7 +60,8 @@ const CreateUser = () => {
           value={password2}
           onChange={(e) => setPassword2(e.target.value)}
         />
-        <button>Register</button>
+        {!isPending && <button>Register</button>}
+        {isPending && <button disabled>Registration in progress ...</button>}
         <p>{email}</p>
         <p>{username}</p>
         <p>{password}</p>
